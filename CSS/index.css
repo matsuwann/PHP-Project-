@@ -1,0 +1,173 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 40px 50px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+    width: 48%; /* Adjust width to fit beside the records container */
+}
+
+.records-container {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
+    width: 48%; /* Adjust width to fit beside the form */
+    overflow-y: auto;
+    max-height: 400px; /* Limit the height of the table */
+}
+
+input[type="text"], input[type="submit"] {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 12px 14px;
+    margin: 8px 0;
+    width: auto;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #ff4b2b;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: transform 80ms ease-in;
+    border: none;
+}
+
+input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f6f5f7;
+}
+
+.centered {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+
+button, .ghost {
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 12px 45px;
+    transition: transform 80ms ease-in;
+    border: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #ff4b2b;
+    color: white;
+    text-transform: uppercase;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.ghost {
+    background-color: transparent;
+    border: 1px solid #ff4b2b;
+    color: #ff4b2b;
+}
+
+/* Adjust button hover effects */
+input[type="submit"]:hover, .ghost:hover {
+    background-color: #ff416c;
+    color: white;
+    border-color: #ff416c;
+}
+
+/* Position the logout button in the top-right corner */
+.logout-btn {
+    position: fixed;  /* Fixed positioning keeps it in place even when scrolling */
+    top: 20px;        /* Distance from the top */
+    right: 20px;      /* Distance from the right */
+    background-color: #ff4b2b;  /* Red color */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 80ms ease-in;
+}
+
+.logout-btn:active {
+    transform: scale(0.95);
+}
+
+.logout-btn:hover {
+    background-color: #ff416c;  /* Darker shade of red on hover */
+}
