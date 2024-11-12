@@ -69,9 +69,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
     $password = $_POST['password'];
 
     if (empty($name) || empty($email) || empty($password)) {
-        echo "All fields are required.";
+        echo "<div style='position: relative; top: 30px;'>All fields are required.</div>";
     } elseif (!preg_match("/^[a-zA-Z]*$/", $name)) {
-        echo "Name can only contain letters and spaces.";
+        echo "<div style='position: relative; top: 30px;'>Name can only contain letters and spaces.</div>";
     } else {
 
         $stmt = $conn->prepare("SELECT * FROM tbl_users WHERE email = ?");
@@ -80,16 +80,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "Email is already registered.";
+            echo "<div style='position: relative; top: 30px;'>Email is already registered.</div>";
         } else {
 
             $stmt = $conn->prepare("INSERT INTO tbl_users (name, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $name, $email, $password);
             
             if ($stmt->execute()) {
-                echo "Registration successful.";
+                echo "<div style='position: relative; top: 30px;'>Registration successful.</div>";
             } else {
-                echo "Error: " . $stmt->error;
+                echo "<div style='position: relative; top: 30px;'>Error: " . $stmt->error . "</div>";
             }
         }
     }
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     $password = $_POST['password'];
 
     if (empty($email) || empty($password)) {
-        echo "Email and password are required.";
+        echo "<div style='position: relative; top: 30px;'>Email and password are required.</div>";
     } else {
         
         
@@ -112,10 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             
             if (($current_time - $last_failed_time) < $cooldown_time) {
                 $remaining_time = $cooldown_time - ($current_time - $last_failed_time);
-                echo "You have reached the maximum number of login attempts. Please try again in " . ceil($remaining_time) . " seconds.";
+               echo "<div style='position: relative; top: 30px;'>You have reached the maximum number of login attempts. Please try again in " . ceil($remaining_time) . " seconds.</div>";
+        exit;
                 exit;
             } else {
-                // Reset failed attempts after cooldown
+            
                 $_SESSION['failed_attempts'] = 0;
             }
         }
@@ -132,17 +133,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                 unset($_SESSION['failed_attempts']);
                 unset($_SESSION['last_failed_time']);
                 
-                echo "Login successful.";
+                echo "<div style='position: relative; top: 30px;'>Login successful.</div>";
 
                 echo "<script>document.location='index.php';</script>";
             } else {
                 $_SESSION['failed_attempts'] = isset($_SESSION['failed_attempts']) ? $_SESSION['failed_attempts'] + 1 : 1;
                 $_SESSION['last_failed_time'] = time();
                 
-                echo "Incorrect password.";
+                echo "<div style='position: relative; top: 30px;'>Incorrect password.</div>";
             }
         } else {
-            echo "No user found with that email.";
+            echo "<div style='position: relative; top: 30px;'>No user found with that email.</div>";
         }
     }
 }
